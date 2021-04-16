@@ -1,0 +1,35 @@
+#root{
+    background-color: azure;
+}
+
+.searchInput{
+    padding: 5px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-decoration: none;
+    outline: none;
+    border-style: none;
+    border: 1px solid #e2e1e1;
+}
+
+.searchContainer button{
+    padding: 6px 8px;
+    border: none;
+    background-color: #75ac8b;
+    color: #fff;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    cursor: pointer;    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: space-between;
+    margin: 0 auto;
+    }
+
+.container ul{
+    padding: 0;
+}
