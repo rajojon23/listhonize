@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, jsonify
 import sqlite3
 from sqlite3 import Error
+from flask_cors import CORS
 
 app = Flask(__name__, static_folder="../static/dist", template_folder="../static")
+# globally enable CORS for avoiding any funky problems locally
+CORS(app)
 
 sql_create_tasklist_table = """ CREATE TABLE IF NOT EXISTS tasklist (
                                     id integer PRIMARY KEY,
@@ -31,26 +34,28 @@ def get_tasklist():
 
 @app.route('/api/v1/tasklist/add' , methods=['POST'])
 def add_task():
-     # if key doesn't exist, returns None
-    task = request.args.get('task')
+    # task = request.args.get('task') this won't be used but request.json['task'] will be instead
+    # note: it is request.json  because the header specified by react's fetch is of 'Content-Type': 'application/json' (see Task.jsx at line 53)
+    # make sure to receive the task to add
+    task = request.json['task']
     conn = sqlite3.connect('tasklist.db')
     cur = conn.cursor()
     tasklist = cur.execute("INSERT OR IGNORE INTO tasklist(name) VALUES(?)", [task])
     conn.commit()
     tasklist = cur.execute('SELECT * FROM tasklist;').fetchall()
     return  jsonify(tasklist)
-    
-# def create_connection(db_file):
-#     """ create a database connection to a SQLite database """
-#     conn = None
-#     try:
-#         conn = sqlite3.connect(db_file)
-#         print(sqlite3.version)
-#     except Error as e:
-#         print(e)
-#     finally:
-#         if conn:
-#             conn.close()
+
+@app.route('/api/v1/tasklist/delete' , methods=['POST'])
+def delete_task():
+     # make sure to receive the task to delete
+    task = request.json['task']
+    conn = sqlite3.connect('tasklist.db')
+    cur = conn.cursor()
+    tasklist = cur.execute("DELETE FROM tasklist WHERE name = ?", [task])
+    conn.commit()
+    tasklist = cur.execute('SELECT * FROM tasklist;').fetchall()
+    return  jsonify(tasklist)
+
 def create_connection(db_file):
     """ create a database connection to the SQLite database
         specified by db_file

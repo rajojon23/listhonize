@@ -3,18 +3,36 @@ import ReactDOM from "react-dom";
 import "../../css/task.css";
 
 const Task = ({task, taskList, setTaskList }) =>{
-    console.log('Task component received task list', taskList);
+
+
+    //Task component will receive Task List here 
     let taskListTemp = taskList;
 
 
     const removeTask = (taskToRemove) => {
         
-
+        //find the task from the task list and remove it (by using th efilter method)
         taskListTemp = taskListTemp.filter(task => task !== taskToRemove);
 
-        console.log('new taskList', taskListTemp);
-
         setTaskList(taskListTemp);
+
+        
+
+        fetch('http://127.0.0.1:5000/api/v1/tasklist/delete', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                task: taskToRemove
+            })
+          })
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json);
+            return json;
+           })
+        
     }
 
 

@@ -8,33 +8,80 @@ const App = () => {
 
     const [taskList, setTaskList] = useState([]);
     const [newTask, setnewTask] = useState("");
-    const [reRender, setreRender] = useState(false);
+    const [reRender, setreRender] = useState(false);//will be the trigger that forces a re-render of the page when needed
     
     useEffect(() => {
-    // setTaskList(taskList);
     
-    }, [reRender]);
     
+    }, [reRender]);//to force re-render when required
+
+    useEffect(() => {
+       
+        //call to fetch the data needed (task list) from the BE
+
+        fetch('http://127.0.0.1:5000/api/v1/tasklist/all')
+        .then(response => response.json())
+        .then((data) => {
+
+            //data received from server BE
+            const taskData = data;
+
+            //iterate through the data we got and push accordingly into tasklist
+            for (let index = 0; index < taskData.length; index++) {
+                const task = taskData[index][1];
+                taskList.push(task);
+                setTaskList(taskList);
+                
+            }
+            setreRender(!reRender);//force re-render of the page (for instant update)
+            
+        });
+
+    }, []);
+    
+    //Function that adds a new task name 
     const addTask = (taskname) => {
 
-        if(newTask != ''){
+        if(newTask != ''){//make sure first the input isn't empty
             taskList.push(taskname);
             setTaskList(taskList);
+
+            //fetch to add the data needed (taskname) to send to the BE
+            fetch('http://127.0.0.1:5000/api/v1/tasklist/add', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    task: taskname
+                })
+              })
+              .then((response) => response.json())
+              .then((json) => {
+                console.log(json);
+                return json;
+               })
+
+
         }
 
     };
 
+
+    //Function that adds a new task name, but on the 'Enter' key pressed, same behavior as the add button on click
     const handleKeyPress = (event) => {
        
 
         if (event.key === 'Enter') {
-            // Do code here
+
             event.preventDefault();
 
 
             if(newTask != ''){
                 addTask(newTask);
                 setreRender(!reRender);
+
+                
             }
 
             
@@ -58,7 +105,7 @@ const App = () => {
                     <button
                         onClick={(event) => {
                             addTask(newTask);
-                            setreRender(!reRender);
+                            setreRender(!reRender);//instant update of the page on click of this button
 
                     }}
                     >

@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 
 /* 
-MULTI PAGE APPLICATION
+SHOULD MULTI PAGE APPLICATION IN THE FUTURE
 */
 
 
