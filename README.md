@@ -14,7 +14,7 @@ Below are the major frameworks or library that I used for this project. Also mak
 To get a local copy up and running follow these simple example steps.
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/rajojon23/listhonize.git
    ```
 2. Install NPM packages
    ```sh
