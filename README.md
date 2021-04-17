@@ -45,11 +45,11 @@ To get a local copy up and running follow these simple example steps.
    ``` 
 
 
-8. If all is well, you should be able to use the app by opening the  (`index.html`) file on your preferred browser
+8. If all is well, you should be able to use the app by opening the  `index.html` file on your preferred browser
 
 
 ## API
-The REST API to the app is described below. The database used is SQLite, which is already included with Python. The default name of the database is (`tasklist.db`)  
+The REST API to the app is described below. The database used is SQLite, which is already included with Python. The default name of the database is `tasklist.db`  
 
 ### Get the task list
 `GET http://127.0.0.1:5000/api/v1/tasklist/all`
@@ -57,17 +57,17 @@ The REST API to the app is described below. The database used is SQLite, which i
 ### Add a Task
 `POST http://127.0.0.1:5000/api/v1/tasklist/add?task=Reach%20out` 
    ```sh
-   {task : "name of the task"}
+   {task : "Reach out"}
    ``` 
 
 ### Remove a specific Task
 `POST http://127.0.0.1:5000/api/v1/tasklist/delete?task=Reach%20out` 
 
    ```sh
-   {task : "name of the task"}
+   {task : "Reach out"}
    ``` 
 
 ## To add
-* Save tasks as completed into the database (task that are crossed out)
+* Save tasks as completed into the database (tasks that are crossed out)
 
 
