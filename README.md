@@ -1,3 +1,8 @@
+<p align="center">
+    <img src="https://i.ibb.co/3rVPDg6/screenshot.png" alt="Listhonize" >
+  
+</p>
+
 ## About The Project
 This is a very simple to-do list. Enjoy!
 
