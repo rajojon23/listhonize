@@ -7,7 +7,7 @@ Below are the major frameworks or library that I used for this project. Also mak
 * [React](https://reactjs.org/)
 * [Webpack](https://webpack.js.org/)
 * [NPM](https://www.npmjs.com/get-npm)
-* [Python](https://www.python.org/downloads/) - (2.7 or higher)
+* [Python](https://www.python.org/downloads/) (2.7 or higher)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/#)
 
 ## Getting Started
@@ -41,7 +41,7 @@ To get a local copy up and running follow these simple example steps.
 
 7. Run the back-end server
    ```sh
-   run python server/server.py
+   python server/server.py
    ``` 
 
 
