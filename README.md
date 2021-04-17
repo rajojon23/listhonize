@@ -20,31 +20,31 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    npm install
    ``` 
-
-3. Activate the python virtual environment
+3. Run the front-end watcher
+   ```sh
+   npm run-script  watch
+   ``` 
+4. Activate the python virtual environment
    ```sh
    fullstack\Scripts\activate
    ``` 
 
-4. Install Flask
+5. Install Flask
    ```sh
    pip install flask
    ``` 
 
-5. Install Flask-CORS
+6. Install Flask-CORS
    ```sh
    pip install flask-cors
    ``` 
 
-6. Run the back-end server
+7. Run the back-end server
    ```sh
    run python server/server.py
    ``` 
 
-7. Run the front-end watcher
-   ```sh
-   npm run-script  watch
-   ``` 
+
 8. If all is well, you should be able to use the app by opening the  (`index.html`) file on your preferred browser
 
 
